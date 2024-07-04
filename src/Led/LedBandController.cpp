@@ -76,26 +76,23 @@ String ReadSelfLedValue() {
     return hexaColor;
 }
 
-void UpdateLedBand(String data) {
-    JSONVar json_data = JSON.parse(data);
-
-    if (JSON.typeof(json_data) == "undefined") {
-        Serial.println("Error parsing JSON");
-        return;
-    }
-
-    // Supposons que "data" soit un tableau JSON
-    int len = json_data.length();
+void UpdateLedBand(JSONVar data) {
+    // data est un json avec 
+    //'code' => 0,
+    // 'message' => 'success',
+    // 'related_devices' => $related_devices,
+    JSONVar related_devices = data["related_devices"];
+    int len = related_devices.length();
     for (int i = 0; i < len; i++) {
-        JSONVar item = json_data[i];
-        Device device = Device::fromJSON(item);
+        JSONVar json_device = related_devices[i];
+        Device device = Device::fromJSON(json_device);
 
         // Convertir le code couleur hexa en valeurs RGB
         long color = strtol(device.getStatus().c_str(), NULL, 16);
         RgbColor ledColor((color >> 16) & 0xFF, (color >> 8) & 0xFF, color & 0xFF);
 
         // Mettre à jour la LED correspondante selon l'ordre
-        strip.SetPixelColor(device.getOrder(), ledColor);
+        strip.SetPixelColor(i, ledColor);
     }
 
     // Afficher les changements

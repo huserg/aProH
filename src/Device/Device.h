@@ -4,16 +4,14 @@
 
 class Device {
 public:
-    Device(int id, const String& status, int order);
+    Device(int id, const String& status);
 
     static Device fromJSON(const String& jsonString);
 
     int getId() const;
     String getStatus() const;
-    int getOrder() const;
 
 private:
     int id;
     String status;
-    int order;
 };

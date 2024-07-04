@@ -20,9 +20,7 @@ void loop() {
 
   SendData(hexa);
 
-  String response = RequestData();
-  Serial.print("Response: ");
-  Serial.println(response);
+  JSONVar response = RequestData();
   
   UpdateLedBand(response);
 

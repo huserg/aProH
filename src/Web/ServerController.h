@@ -8,5 +8,5 @@
 
 
 void SetupWifi();
-String RequestData();
+JSONVar RequestData();
 void SendData(String new_value);

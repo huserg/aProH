@@ -18,5 +18,5 @@ extern RgbColor cyan;
 
 void SetupLedBand();
 String ReadSelfLedValue();
-void UpdateLedBand(String data);
+void UpdateLedBand(JSONVar data);
 

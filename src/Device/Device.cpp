@@ -2,17 +2,14 @@
 
 Device::Device(int id, const String& status) : id(id), status(status) {}
 
-Device Device::fromJSON(const String& jsonString) {
-    JSONVar json = JSON.parse(jsonString);
-
-    if (JSON.typeof(json) == "undefined") {
+Device Device::fromJSON(const JsonObject& jsonObject) {
+    if (jsonObject.isNull()) {
         Serial.println("Error parsing JSON");
         return Device(-1, "unknown");
     }
 
-    int id = JSON.stringify(json["device_id"]).toInt();
-    String status = JSON.stringify(json["status"]);
-    status.replace("\"", "");  // Remove quotes from the parsed string
+    int id = jsonObject["id"];
+    String status = jsonObject["status"].as<String>();
 
     return Device(id, status);
 }

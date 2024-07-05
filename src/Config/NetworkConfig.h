@@ -7,5 +7,5 @@ extern const char* SSID;
 extern const char* PASSWORD;
 
 // Déclaration des constantes du serveur
-extern const uint16_t HTTP_PORT;
-extern const String SERVER_NAME;
+extern const char* SERVER_NAME;
+extern const int HTTP_PORT;

@@ -1,0 +1,3 @@
+- trou pour potentiometre 
+- passage pour fils d'alim USB-C 
+- espace plus grand pour boulons des LEDS

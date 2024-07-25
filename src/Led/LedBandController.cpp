@@ -51,11 +51,11 @@ String LedBandController::readSelfLedValue() {
 
     // Get potentiometer value (4095 max)
     if (potentiometerValue <= POTENTIOMETER_MAX_VALUE / 3 * 1) {
-        redValue = 255;
+        greenValue = 255;
     } else if (potentiometerValue <= POTENTIOMETER_MAX_VALUE / 3 * 2) {
         blueValue = 255;
     } else {
-        greenValue = 255;
+        redValue = 255;
     }
 
     analogWrite(SELF_LED_RED, redValue);
